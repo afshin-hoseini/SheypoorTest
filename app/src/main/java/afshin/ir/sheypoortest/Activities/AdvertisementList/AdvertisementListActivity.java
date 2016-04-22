@@ -6,6 +6,10 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +25,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import afshin.ir.sheypoortest.Entities.Advertisement;
 import afshin.ir.sheypoortest.R;
 import afshin.ir.sheypoortest.Utilities.StylingUtil;
 
@@ -29,6 +36,14 @@ public class AdvertisementListActivity extends AppCompatActivity
 
     Handler handler = new Handler();
     DrawerLayout drawer = null;
+    RecyclerView rv_advertisements = null;
+    AdvertisementsAdapter advertisementsAdapter = null;
+    ArrayList<Advertisement> advertisements = new ArrayList<>();
+    boolean isStaggeredLayout = false;
+    SwipeRefreshLayout swipeRefreshLayout = null;
+    RecyclerView.LayoutManager layoutManager = null;
+
+// ____________________________________________________________________
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +79,20 @@ public class AdvertisementListActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).getIcon().setColorFilter(getResources().getColor(R.color.actionOrange), PorterDuff.Mode.MULTIPLY);
 
+        //Setup advertisement recycler view
+        rv_advertisements = (RecyclerView) findViewById(R.id.rv_advertisements);
+        layoutManager = new LinearLayoutManager(this);
+        rv_advertisements.setLayoutManager(layoutManager);
+        advertisementsAdapter = new AdvertisementsAdapter(this);
+        rv_advertisements.setAdapter(advertisementsAdapter);
+
+
+        //Setup refresh layout
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshLayout);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
+
+
         //Changes the whole view's font after a little delay.
         handler.postDelayed(new Runnable() {
             @Override
@@ -74,7 +103,18 @@ public class AdvertisementListActivity extends AppCompatActivity
         }, 200);
 
         adjustTabs();
+        setupTestData();
 
+    }
+
+// ____________________________________________________________________
+
+
+    private void setupTestData() {
+
+        this.advertisements = TestAdvertisementDataProvider.getTestAdvertisements(this);
+        advertisementsAdapter.setAdvertisements(this.advertisements);
+        advertisementsAdapter.notifyDataSetChanged();
     }
 
 // ____________________________________________________________________
@@ -108,7 +148,20 @@ public class AdvertisementListActivity extends AppCompatActivity
         int id = item.getItemId();
 
 
-        if (id == R.id.action_search) {
+        if (id == R.id.action_gallery) {
+
+            isStaggeredLayout = !isStaggeredLayout;
+
+            int iconResource = isStaggeredLayout ? R.mipmap.ic_list_bulleted_white_24dp : R.mipmap.ic_gallery_white_24dp;
+            item.setIcon(iconResource);
+
+            
+            rv_advertisements.setLayoutManager(isStaggeredLayout ? new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) : new LinearLayoutManager(this));
+            advertisementsAdapter.setIsStaggered(isStaggeredLayout);
+            advertisementsAdapter.notifyDataSetChanged();
+
+
+
             return true;
         }
 
@@ -153,6 +206,23 @@ public class AdvertisementListActivity extends AppCompatActivity
         lbl.setText(R.string.state);
 
     }
+
+// ____________________________________________________________________
+
+    SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }, 2000);
+
+        }
+    };
 
 // ____________________________________________________________________
 }
