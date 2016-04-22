@@ -18,4 +18,9 @@
     <string name="filters">فیلترها</string>
     <string name="groups">گروه ها</string>
     <string name="state">استان</string>
+    <string name="day">روز</string>
+    <string name="hour">ساعت</string>
+    <string name="minute">دقیقه</string>
+    <string name="second">ثانیه</string>
+    <string name="ago">پیش</string>
 </resources>

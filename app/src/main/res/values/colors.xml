@@ -6,4 +6,8 @@
 
     <color name="actionOrange">#e78307</color>
 
+    <color name="advItemGrayTextColor">#aaaaaa</color>
+    <color name="advItemGreenTextColor">#719e34</color>
+    <color name="advItemGrayIconOverlay">#737373</color>
+
 </resources>
