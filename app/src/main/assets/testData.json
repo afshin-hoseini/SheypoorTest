@@ -1,0 +1,72 @@
+[
+  {
+    "label": "دوچرخه",
+    "address": "مشهد",
+    "price": "۲۰۰ هزار تومان",
+    "imgurl": "img1",
+    "interval": 3000
+  },
+  {
+    "label": "اتومبیل ژیان",
+    "address": "تهران",
+    "price": "۱۰۰۰۰۰۰ تومان",
+    "imgurl": "img2",
+    "interval": 59000
+  },
+  {
+    "label": "لپ تاپ لنوُ",
+    "address": "شیراز",
+    "price": "۵۰۰ هزار تومان",
+    "imgurl": "img3",
+    "interval": 62000
+  },
+  {
+    "label": "گلابی مصنوعی",
+    "address": "زاهدان",
+    "price": "۲۰۰۰ تومان",
+    "imgurl": "img4",
+    "interval": 82000
+  },
+  {
+    "label": "گوشی موبایل آیفون",
+    "address": "تهران",
+    "price": "۴۰۰ هزار تومان",
+    "imgurl": "img5",
+    "interval": 120000
+  },
+  {
+    "label": "لپ تاپ اپل",
+    "address": "مشهد",
+    "price": "۵ میلیون تومان",
+    "imgurl": "img6",
+    "interval": 300000
+  },
+  {
+    "label": "ال سی دی ایسوس",
+    "address": "اصفهان",
+    "price": "۸۰۰ هزار تومان",
+    "imgurl": "img7",
+    "interval": 400000
+  },
+  {
+    "label": "واحد تجاری",
+    "address": "مشهد",
+    "price": "۲۰ میلیون رهن",
+    "imgurl": "img8",
+    "interval": 800000
+  },
+  {
+    "label": "گوشی موبایل سامسونگ",
+    "address": "ایرانشهر",
+    "price": "۷۰۰ هزار تومان",
+    "imgurl": "img9",
+    "interval": 1200000
+  },
+  {
+    "label": "میز تحریر",
+    "address": "اهواز",
+    "price": "۵۰ هزار تومان",
+    "imgurl": "img10",
+    "interval": 3600000
+  }
+]
