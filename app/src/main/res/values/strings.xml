@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sheypoor Test</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_search">جستجو</string>
+    <string name="action_gallery">گالری</string>
+
+    <string name="toolbarTitle">شیپور</string>
+    <string name="homePage">صفحه نخست</string>
+    <string name="addFreeAdvertisement">ثبت آگهی رایگان</string>
+    <string name="account">حساب کاربری</string>
+    <string name="favorites">پسندیده ها</string>
+    <string name="terms">بایدها و نبایدها</string>
+    <string name="contactWithSupport">تماس با پشتیبانی</string>
+    <string name="Share">به اشنراک گذاری شیپور ۲.۱.۹</string>
+    <string name="filters">فیلترها</string>
+    <string name="groups">گروه ها</string>
+    <string name="state">استان</string>
+</resources>

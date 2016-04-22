@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_homePage"
+            android:icon="@mipmap/ic_home_white_24dp"
+            android:title="@string/homePage" />
+        <item
+            android:id="@+id/nav_addAdvertisement"
+            android:icon="@mipmap/ic_add_circle_white_24dp"
+            android:title="@string/addFreeAdvertisement"/>
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@mipmap/ic_person_white_24dp"
+            android:title="@string/account" />
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@mipmap/ic_stars_white_24dp"
+            android:title="@string/favorites" />
+    </group>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_terms"
+                android:title="@string/terms" />
+            <item
+                android:id="@+id/nav_contactSupport"
+                android:title="@string/contactWithSupport" />
+            <item
+                android:id="@+id/nav_shareApp"
+                android:title="@string/Share" />
+
+        </menu>
+    </item>
+
+</menu>
