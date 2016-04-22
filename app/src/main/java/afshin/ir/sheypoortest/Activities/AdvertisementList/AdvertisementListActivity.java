@@ -155,7 +155,7 @@ public class AdvertisementListActivity extends AppCompatActivity
             int iconResource = isStaggeredLayout ? R.mipmap.ic_list_bulleted_white_24dp : R.mipmap.ic_gallery_white_24dp;
             item.setIcon(iconResource);
 
-            
+
             rv_advertisements.setLayoutManager(isStaggeredLayout ? new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL) : new LinearLayoutManager(this));
             advertisementsAdapter.setIsStaggered(isStaggeredLayout);
             advertisementsAdapter.notifyDataSetChanged();
