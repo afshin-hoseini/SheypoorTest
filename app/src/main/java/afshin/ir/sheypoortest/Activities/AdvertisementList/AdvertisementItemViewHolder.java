@@ -3,8 +3,11 @@ package afshin.ir.sheypoortest.Activities.AdvertisementList;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.ScaleDrawable;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,8 +50,25 @@ public class AdvertisementItemViewHolder extends RecyclerView.ViewHolder {
 
 //        Drawable location = new ScaleDrawable(txtAddress.getCompoundDrawables()[0],0,0.1f,0.1f).getDrawable();
 //        txtAddress.setCompoundDrawables(null, null, location, null);
-        txtAddress.getCompoundDrawables()[0].setColorFilter(ctx.getResources().getColor(R.color.advItemGrayIconOverlay), PorterDuff.Mode.MULTIPLY);
-        txtTime.getCompoundDrawables()[0].setColorFilter(ctx.getResources().getColor(R.color.advItemGrayIconOverlay), PorterDuff.Mode.MULTIPLY);
+
+
+        if(Build.VERSION.SDK_INT < 20) {
+            Drawable location = ContextCompat.getDrawable(ctx, R.mipmap.ic_location_on_white_24dp);
+            location.setColorFilter(ctx.getResources().getColor(R.color.advItemGrayIconOverlay), PorterDuff.Mode.MULTIPLY);
+            txtAddress.setCompoundDrawables(null, null, location, null);
+
+
+            Drawable time = ContextCompat.getDrawable(ctx, R.mipmap.ic_time_white_24dp);
+            time.setColorFilter(ctx.getResources().getColor(R.color.advItemGrayIconOverlay), PorterDuff.Mode.MULTIPLY);
+            txtTime.setCompoundDrawables(null, null, time, null);
+
+        }
+        else {
+
+            txtAddress.getCompoundDrawables()[0].setColorFilter(ctx.getResources().getColor(R.color.advItemGrayIconOverlay), PorterDuff.Mode.MULTIPLY);
+            txtTime.getCompoundDrawables()[0].setColorFilter(ctx.getResources().getColor(R.color.advItemGrayIconOverlay), PorterDuff.Mode.MULTIPLY);
+        }
+
     }
 
 // ____________________________________________________________________

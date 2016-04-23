@@ -52,6 +52,8 @@ public class AdvertisementListActivity extends AppCompatActivity
         setContentView(R.layout.activity_advertisement_list);
         ViewCompat.setLayoutDirection(getWindow().getDecorView(), ViewCompat.LAYOUT_DIRECTION_RTL);
 
+        adjustTabs();
+
         //Setup actionbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -93,6 +95,7 @@ public class AdvertisementListActivity extends AppCompatActivity
         swipeRefreshLayout.setOnRefreshListener(refreshListener);
 
 
+        StylingUtil.setFont((ViewGroup) getWindow().getDecorView(), StylingUtil.getFont(StylingUtil.regularFont, getAssets()));
         //Changes the whole view's font after a little delay.
         handler.postDelayed(new Runnable() {
             @Override
@@ -100,9 +103,9 @@ public class AdvertisementListActivity extends AppCompatActivity
 
                 StylingUtil.setFont((ViewGroup) getWindow().getDecorView(), StylingUtil.getFont(StylingUtil.regularFont, getAssets()));
             }
-        }, 200);
+        }, 500);
 
-        adjustTabs();
+
         setupTestData();
 
     }
@@ -201,7 +204,7 @@ public class AdvertisementListActivity extends AppCompatActivity
 
         LinearLayout tabState = (LinearLayout) findViewById(R.id.tab_state);
         icon = (ImageView) tabState.findViewById(R.id.img_icon);
-        icon.setImageResource(R.mipmap.ic_location_on_white_24dp);
+        icon.setImageResource(R.drawable.ic_state_tab_icon);
         lbl = (TextView) tabState.findViewById(R.id.txtLabel);
         lbl.setText(R.string.state);
 
