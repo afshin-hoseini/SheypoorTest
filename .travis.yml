@@ -26,3 +26,13 @@ android:
 
 script: 
   - ./gradlew build
+  - cd $TRAVIS_BUILD_DIR
+  - ls
+
+deploy:
+  provider: releases
+  api_key:  $GIT_HUB_RELEASE_API_KEY
+  file: ./app/build/outputs/apk/app-release-unsigned.apk
+  skip_cleanup: true
+  on:
+    tags: true
