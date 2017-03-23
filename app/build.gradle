@@ -11,10 +11,48 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+
+            def jsonFile = file('../Key/key.json')
+            def parsedJson = new groovy.json.JsonSlurper().parseText(jsonFile.text)
+
+            println parsedJson.storePass
+
+
+            storeFile file("../Key/key.jks")
+            storePassword parsedJson.storePass
+            keyAlias parsedJson.alias
+            keyPassword parsedJson.keyPass
+        }
+    }
+
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        signedRelease {
+
+            signingConfig signingConfigs.release
+        }
+
+
+    }
+
+    applicationVariants.all { variant ->
+
+        variant.outputs.each { output ->
+
+            def outputFile = output.outputFile
+
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                def fileName = "Sheypoor-${variant.getBaseName()}-${defaultConfig.versionName}.apk"
+                output.outputFile = new File(outputFile.parent, fileName)
+            }
         }
     }
 }

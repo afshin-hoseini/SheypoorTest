@@ -1,7 +1,9 @@
 #built application files
 *.apk
 *.ap_
-key/
+key/key.jks
+key/key.json
+key/key.bin
 
 # files for the dex VM
 *.dex
